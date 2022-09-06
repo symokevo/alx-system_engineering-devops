@@ -1,0 +1,1 @@
+Shell l variables expansions
