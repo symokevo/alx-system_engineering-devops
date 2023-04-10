@@ -1,21 +1,16 @@
 #!/usr/bin/env bash
-# Domain configuration
+# takes in a domain and subdomain as argument and print out the subdomain infos
 
-process ()
-{
-  domain="$1"
-  subdomain="$2"
-  
-  dig "$subdomain"."$domain" | tail -n 7 | head -n 1 | awk -v subdomain="${subdomain}" '{print "The subdomain " subdomain " is a " $4 " record and points to " $5}'
+output () {
+    dig "$1" | grep -A1 'ANSWER SECTION:' | sed -r "s/$1./$2/g" |  awk -F" " ' NR==2 { print "The subdomain " $1 " is a " $4 " record and points to "$5 }'
 }
 
-if [ -z "$2" ]
+if [ "$#" -eq 2 ]
 then
-  for subdomain in 'www' 'lb-01' 'web-01' 'web-02'
-  do
-    process "$1" "$subdomain"
-  done
+    output "$2.$1" "$2"
 else
-  process "$1" "$2"
+    output "www.$1" 'www'
+    output "lb-01.$1" 'lb-01'
+    output "web-01.$1" 'web-01'
+    output "web-02.$1" 'web-02'
 fi
-

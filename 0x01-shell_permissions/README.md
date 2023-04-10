@@ -1,3 +1,3 @@
-Shell, permission <br/>
-This is all about various commands to achieve privacy in linux environment. <br/>
-Especially now that linux is a multiuser operating system.
+### My readme for the shell permissions task
+
+Resource: [Permissions](http://linuxcommand.org/lc3_lts0090.php)

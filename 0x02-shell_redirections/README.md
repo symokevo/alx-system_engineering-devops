@@ -1,1 +1,2 @@
-This project is about shell directions
+shell redirection readme
+Everything about the I/O redirections
