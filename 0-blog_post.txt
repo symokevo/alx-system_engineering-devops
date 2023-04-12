@@ -1,0 +1,17 @@
+When you type "https://www.google.com" in your browser and hit Enter, several things happen in the background to get the webpage loaded on your screen. In this blog post, we will discuss the different steps involved in this process, from the DNS request to the final webpage rendering.
+DNS request: 
+The first step is to resolve the domain name "www.google.com" to an IP address. This process is known as DNS (Domain Name System) resolution, and it involves querying a DNS server to get the IP address associated with the domain name. Your browser sends a DNS request to your local DNS server, which in turn forwards the request to other DNS servers until it finds the IP address associated with the domain name.
+TCP/IP: 
+Once the IP address is obtained, your browser establishes a TCP/IP (Transmission Control Protocol/Internet Protocol) connection with the server hosting the website. This involves a three-way handshake process to establish a reliable connection between the client and server.
+Firewall: 
+After the TCP/IP connection is established, the request goes through your computer's firewall. The firewall checks to make sure that the request is legitimate and not malicious. If the request is deemed safe, it is allowed to proceed to the next step.
+HTTPS/SSL: 
+If the website you are accessing is secured with HTTPS (HyperText Transfer Protocol Secure), your browser will initiate an SSL (Secure Sockets Layer) handshake with the server. This is to establish a secure encrypted connection between the client and server. During the SSL handshake, the server sends its SSL certificate to the client, and the client verifies the certificate to ensure that it is valid and issued by a trusted certificate authority.
+Load-balancer: 
+If the website you are accessing is hosted on multiple servers, your request is sent to a load-balancer, which distributes the request to the appropriate server. The load-balancer ensures that the incoming traffic is evenly distributed across all available servers, thus preventing overloading of any particular server.
+Web server: 
+After the request reaches the appropriate server, the web server receives the request and retrieves the relevant web page or resource. The web server then generates a response, which includes the requested data and relevant headers.
+Application server: If the requested resource requires server-side processing, the web server forwards the request to the appropriate application server. The application server executes the necessary code and returns the results to the web server.
+Database: If the requested resource requires data from a database, the application server queries the database and retrieves the relevant data. The application server then processes the data and sends it back to the web server, which includes it in the final response.
+In conclusion, typing "https://www.google.com" in your browser and hitting Enter triggers a complex sequence of events involving DNS resolution, TCP/IP connection establishment, firewall checks, HTTPS/SSL handshake, load-balancing, web server processing, application server execution, and database queries. Understanding these steps is crucial for web developers and system administrators to optimize website performance and ensure a seamless user experience.
+
