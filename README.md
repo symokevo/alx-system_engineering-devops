@@ -6,10 +6,10 @@ This repository comprises projects I completed in the _ALX_ system Engineering D
     <summary><b>Simon Rabuogi</b></summary>
     <ul>
         <li>
-            <a href="https://github.com/Adeleye080">Github</a>
+            <a href="https://github.com/symokevo">Github</a>
         </li>
         <li>
-            <a href="https://www.linkedin.com/in/simon_rabuogi/">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/simon-rabuogi/">LinkedIn</a>
         </li>
         <li>
             <a href="mailto:codesimonwise@gmail.com">e-mail</a>
