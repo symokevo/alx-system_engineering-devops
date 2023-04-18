@@ -3,16 +3,16 @@ This repository comprises projects I completed in the _ALX_ system Engineering D
 
 ### Author
 <details>
-    <summary><b>Ajiboye Adeleye</b></summary>
+    <summary><b>Simon Rabuogi</b></summary>
     <ul>
         <li>
             <a href="https://github.com/Adeleye080">Github</a>
         </li>
         <li>
-            <a href="https://www.linkedin.com/in/ajiboye-adeleye-b561a7211/">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/simon_rabuogi/">LinkedIn</a>
         </li>
         <li>
-            <a href="mailto:ajiboyeadeleye080@gmail.com">e-mail</a>
+            <a href="mailto:codesimonwise@gmail.com">e-mail</a>
         </li>
     </ul>
 </details>
