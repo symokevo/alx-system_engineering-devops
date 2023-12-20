@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# show current user
+# Run as non-root user; Take username from first arg passed
+
 sudo -u "$1" whoami
