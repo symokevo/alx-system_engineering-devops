@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# A simple Bash script to reload Gunicorn in a graceful way.
+
+for pid in $(ps hf -opid,cmd -C gunicorn | awk '$2 !~ /^[|\\]/ { print $1 }');
+do
+	kill -s HUP "$pid";
+done
