@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# takes in a domain and subdomain as argument and print out the subdomain infos
+#Takes a subdomain and domain to display information about subdomains
 
-output () {
-    dig "$1" | grep -A1 'ANSWER SECTION:' | sed -r "s/$1./$2/g" |  awk -F" " ' NR==2 { print "The subdomain " $1 " is a " $4 " record and points to "$5 }'
+print_info () {
+    dig "$1" | grep -A1 'ANSWER SECTION:' | sed -r "s/$1./$2/g" | awk -F" " ' NR==2 { print "The subdomain " $1 " is a " $4 " record and points to " $5 }'
 }
 
 if [ "$#" -eq 2 ]
 then
-    output "$2.$1" "$2"
+    print_info "$2.$1" "$2"
 else
-    output "www.$1" 'www'
-    output "lb-01.$1" 'lb-01'
-    output "web-01.$1" 'web-01'
-    output "web-02.$1" 'web-02'
+    print_info "www.$1" "www"
+    print_info "lb-01.$1" "lb-01"
+    print_info "web-01.$1" "web-01"
+    print_info "web-02.$1" "web-02"
 fi
