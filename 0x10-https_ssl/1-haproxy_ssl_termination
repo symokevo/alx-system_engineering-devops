@@ -33,14 +33,17 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
+
 frontend http-in
         bind *:80
         bind *:443 ssl crt /etc/haproxy/ssl.pem
         http-request redirect scheme https unless { ssl_fc }
+        acl is_root path -m end /
+        http-request set-var(req.holberton) str(/) if is_root
+        http-response set-header X-Holberton-Page %[var(req.holberton)]
         default_backend servers
 
 backend servers
         balance roundrobin
         server 126737-web-01 100.25.198.206:80 check
         server 126737-web-02 52.91.135.184:80 check
-
