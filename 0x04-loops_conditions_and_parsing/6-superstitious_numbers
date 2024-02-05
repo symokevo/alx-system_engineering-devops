@@ -1,23 +1,30 @@
 #!/usr/bin/env bash
-# Bash script that displays numbers from 1 to 20 and
-# displays 4 and then bad luck from China for the 4th loop iteration
-# displays 9 and then bad luck from Japan for the 9th loop iteration
-# displays 17 and then bad luck from Italy for the 17th loop iteration
+#loop upto 1 to 20
+#display displays 4 and then bad luck from China for the 4th loop iteration
+#displays 9 and then bad luck from Japan for the 9th loop iteration
+#displays 17 and then bad luck from Italy for the 17th loop iteration
+#use while and case
 
-index=0
-number=1
-
-while [ $index -lt 20 ]
+min_num=1
+while [ $min_num -lt 21 ]
 do
-  echo $number
-  case $index in
-    3)
-       echo "bad luck from China";;
-    8)
-       echo "bad luck from Japan";;
-    16)
-       echo "bad luck from Italy"
-  esac
-  ((index++))
-  ((number++))
+case $min_num in
+4)
+echo "$min_num"
+echo "bad luck from China"
+;;
+9)
+echo "$min_num"
+echo "bad luck from Japan"
+;;
+17)
+echo "$min_num"
+echo "bad luck from Italy"
+;;
+*)
+echo "$min_num"
+;;
+esac
+(( min_num++ ))
 done
+

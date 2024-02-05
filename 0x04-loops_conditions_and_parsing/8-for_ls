@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# Displays content of the current directory in a list format
-# only displays the part after the "-" dash
-
-list=$(ls)
-for i in $list;
+# Displays the
+# The content of the current directory
+# In list format
+# Where only the part of the name after the first dash is displayed
+LIST="$(ls)"
+for l in $LIST;
 do
-  echo "$i" | cut -d '-' -f2
+	echo "$l" | cut -d '-' -f 2
 done

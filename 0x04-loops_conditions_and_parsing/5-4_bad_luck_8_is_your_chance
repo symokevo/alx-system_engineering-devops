@@ -1,21 +1,19 @@
 #!/usr/bin/env bash
-# Bash script that loops from 1 to 10 and:
-# displays bad luck for the 4th loop iteration
-# displays good luck for the 8th loop iteration
-# displays Best School for the other iterations
+#This script loops through and multiplies a word
+#prints bad luck , good luck and Best School
+#uses elif and while
 
-index=0
-
-while [ $index -lt 10 ]
+loop=1
+while [ $loop -lt 11 ]
 do
-  if [ $index -eq 3 ]
-  then
-    echo "bad luck"
-  elif [ $index -eq 7 ]
-  then
-    echo "good luck"
-  else
-    echo "Best School"
-  fi
-  ((index++))
+if [ $loop -eq 4 ]
+then
+echo "bad luck"
+elif [ $loop -eq 8 ]
+then
+echo "good luck"
+else
+echo "Best School"
+fi
+(( loop++))
 done

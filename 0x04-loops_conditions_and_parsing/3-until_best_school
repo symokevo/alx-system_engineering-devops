@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Bash script that displays "Best School" 10times
+# Print ten times use the until loop (for and while are forbidden)
 
-index=0
-
-until [ $index == 10 ]
+loop=0
+until [ $loop -eq 10 ]
 do
-  echo "Best School"
-  ((index++))
+echo "Best School"
+(( loop++ ))
 done

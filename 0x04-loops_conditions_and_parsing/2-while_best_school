@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Bash script that displays "Best School" 10times
+# use while loop to display 10 times.
 
-index=0
-
-while [ $index -lt 10 ]
+i=0
+while [ $i -lt 10 ]
 do
-  echo "Best School"
-  ((index++))
+echo "Best School"
+((i++))
 done

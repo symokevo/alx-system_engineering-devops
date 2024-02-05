@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# Displays "Best School" but displays "Hi" on the 9th iteration
+#loop until a point
 
-index=0
-
-while [ $index -lt 10 ]
+loop=0
+while [ $loop -lt 10 ]
 do
-  if [ $index -eq 9 ]
-  then
-    echo "Hi"
-  fi
-  echo "Best School"
-  ((index++))
+if [ $loop -eq 9 ]
+then
+echo "Hi"
+fi
+echo "Best School"
+(( loop++ ))
 done
+
