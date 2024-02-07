@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-# Establish a connection to 44.200.178.81 using Private key in ~/.ssh/school file
-
-ssh -i ~/.ssh/school ubuntu@453cde9b074e 
+# Connects to a server using a private key
+ssh -i ~/.ssh/school ubuntu@18.206.198.214
