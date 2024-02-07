@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # add stable version of nginx
 exec { 'add nginx stable repo':
   command => 'sudo add-apt-repository ppa:nginx/stable',
@@ -59,13 +60,14 @@ file { 'Nginx default config file':
         location  /404.html {
             internal;
         }
-        
+
         if (\$request_filename ~ redirect_me){
             rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
         }
 }
 ",
 }
+
 # restart nginx
 exec { 'restart service':
   command => 'service nginx restart',

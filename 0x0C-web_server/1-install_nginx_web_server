@@ -1,8 +1,25 @@
 #!/usr/bin/env bash
-# nginx web server listening on port 80
-# returns a page that contains the string "Hello World!"
+# Installs Nginx with the following configurations:
+#+    Listens on port 80.
+#+    Returns a page containing "Holberton School" when queried
+#+    at the root with a curl GET request.
 
-sudo apt update -y
-sudo apt install -y nginx
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-sudo service nginx start
+sudo apt-get update
+sudo apt-get install -y nginx
+
+sudo mkdir /etc/nginx/html
+sudo touch /etc/nginx/html/index.html
+
+chmod 666 /etc/nginx/html/index.html
+echo "Hello World!" > /etc/nginx/html/index.html
+
+chmod 666 /etc/nginx/sites-available/default
+printf %s "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /etc/nginx/html;
+     index       index.html index.htm;
+}
+" > /etc/nginx/sites-available/default
+
+sudo service nginx restart
