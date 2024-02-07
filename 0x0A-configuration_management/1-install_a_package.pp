@@ -1,4 +1,4 @@
-# Installs flask(ver 2.1.0)
+# This script installs flask from pip3
 
 package { 'flask':
   ensure   => '2.1.0',
