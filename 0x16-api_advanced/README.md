@@ -1,43 +1,57 @@
-# API advanced
+# API Usage
 
-I continued to practice querying API's in this advanced project, this time
-working with the Reddit API.
+APIs (Application Programming Interfaces) are a way for software applications to communicate and exchange information with each other. They allow you to programmatically access data and functionality from other applications, such as social media platforms, weather services, or e-commerce sites.
 
-## Function Prototypes :floppy_disk:
+This README file explains how to use an API with pagination, how to parse JSON results from an API, how to make a recursive API call, and how to sort a dictionary by value.
 
-Prototypes for functions written in this project:
+## How to Use an API with Pagination
 
-| File           | Prototype                               |
-| -------------- | --------------------------------------- |
-| `0-subs.py`    | `def number_of_subscribers(subreddit)`  |
-| `1-top_ten.py` | `def top_ten(subreddit)`                |
-| `2-recurse.py` | `def recurse(subreddit, hot_list=[])`   |
-| `100-count.py` | `def count_words(subreddit, word_list)` |
+Sometimes, the data you want to retrieve from an API is too large to be returned in a single request. In this case, the API may use pagination, which means it will split the data into multiple pages or results and return them one at a time. To access all the data, you need to make multiple requests and combine the results.
 
-## Tasks :page_with_curl:
+To use an API with pagination, you typically need to specify the page number or the offset and limit parameters in your request. For example, if an API returns 50 results per page and you want to retrieve the first 100 results, you would make two requests with the following parameters:
 
-* **0. How many subs?**
-  * [0-subs.py](./0-subs.py): Python function that returns the total number of
-  subscribers for a given subreddit.
-  * Returns `0` if an invalid subreddit is given.
+* First request: `page=1&limit=50`
+* Second request: `page=2&limit=50`
 
-* **1. Top Ten**
-  * [1-top_ten.py](./1-top_ten.py): Python function that prints the top ten
-  hottest posts for a given subreddit.
-  * Prints `None` if an invalid subreddit is given.
+You can then combine the results from both requests to get the full set of data.
 
-* **2. Recurse it!**
-  * [2-recurse.py](./2-recurse.py): Python function that recursively returns a
-  list of titles for all hot articles on a given subreddit.
-  * Returns `None` if no results are found on the given subreddit.
+## How to Parse JSON Results from an API
 
-* **3. Count it!**
-  * [100-count.py](./100-count.py): Python function that recursively prints a
-  sorted count of given keywords parsed from titles of all hot articles on a given
-  subreddit.
-  * Keywords are case-insensitive and delimited by spaces.
-  * Results are printed in descending order by count.
-  * Words with identical counts are sorted alphabetically.
-  * Words with no matches are skipped.
-  * Results are based on the number of times a keyword appears - ie.,
-  `java java java` counts as three separate instances of `java`.
+Many APIs return data in JSON (JavaScript Object Notation) format, which is a lightweight and easy-to-read format for representing data. JSON data consists of key-value pairs, where the keys are strings and the values can be strings, numbers, booleans, arrays, or other objects.
+
+To parse JSON results from an API in Python, you can use the built-in `json` module. Here's an example of how to parse JSON data from an API:
+
+```python
+import requests
+import json
+
+response = requests.get('https://api.example.com/data')
+data = json.loads(response.text)
+```
+
+In this example, we're sending a GET request to an API and storing the response in the `response` variable. We then use the `json.loads()` method to parse the JSON data from the response and store it in the `data` variable.
+
+## How to Make a Recursive API Call
+
+Sometimes, an API may return a limited amount of data per request, or it may have rate limits that prevent you from making too many requests in a short period of time. In this case, you may need to make a recursive API call, which means making repeated requests until you retrieve all the data you need.
+
+To make a recursive API call, you typically need to write a function that calls itself recursively until a certain condition is met. For example, you might want to retrieve all the tweets from a user's timeline, but the API only returns the most recent 200 tweets per request. To get all the tweets, you would make multiple requests with different `max_id` parameters until you reach the end of the timeline.
+
+Here's an example of a recursive function that retrieves all the tweets from a user's timeline:
+
+```python
+import requests
+import json
+
+def get_all_tweets(user_id, access_token, max_id=None):
+    tweets = []
+    params = {'user_id': user_id, 'access_token': access_token}
+    if max_id:
+        params['max_id'] = max_id
+    response = requests.get('https://api.twitter.com/1.1/statuses/user_timeline.json', params=params)
+    if response.status_code == 200:
+        data = json.loads(response.text)
+        tweets += data
+        if len(data) == 200:
+            last_tweet_id = data[-1]['id']
+            tweets += get_all_tweets(user_id, access_token, last
